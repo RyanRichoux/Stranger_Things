@@ -11,6 +11,7 @@ import {
   Footer,
   Header,
   Login,
+  Messages,
   Post,
   Profile,
   Register,
@@ -19,6 +20,11 @@ import {
   
 
 } from './components';
+
+import { 
+  fetchPosts
+} from './api'
+
 
 
 export default function App() {

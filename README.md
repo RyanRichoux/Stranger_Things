@@ -1,3 +1,0 @@
-# Stranger_Things
-
-Hi.

@@ -8,11 +8,16 @@ import {
 } from "react-router-dom"
 
 import {
+  Footer,
+  Header,
   Login,
   Post,
   Profile,
   Register,
-  Header
+  Search,
+  ShowPosts
+  
+
 } from './components';
 
 

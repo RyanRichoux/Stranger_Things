@@ -1,23 +1,20 @@
 import React from 'react'
 
-const Post = () =>{
-    return   <h2> Post Page</h2>
-
-
+const Messages = () =>{
+    return   <h2> Messages</h2>
 }
 
-/*fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {
+
+
+/*fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts/5e8929ddd439160017553e06/messages', {
   method: "POST",
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer TOKEN_STRING_HERE'
   },
   body: JSON.stringify({
-    post: {
-      title: From Text Box., 
-      description: From Text Box.
-      price: From Text Box., 
-      willDeliver: From Text Box.
+    message: {
+      content: "Do you still have this?  Would you take $10 less?"
     }
   })
 }).then(response => response.json())
@@ -28,6 +25,4 @@ const Post = () =>{
 
 
 
-
-
-export default Post 
+export default Messages 

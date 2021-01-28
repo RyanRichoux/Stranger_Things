@@ -1,7 +1,7 @@
 
 
 
-.post {
+.postBox {
     padding: 10px;
     color: black;
     max-width: 600px;
@@ -16,4 +16,29 @@
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
     border-radius: 10px;   
+}
+
+.postTitle {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.postDescription {
+    font-size: 14px;
+}
+
+.postLocation {
+    font-size: 14px;
+}
+
+.postAuthor {
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.postCreatedUpdated {
+        font-size: 12px;
+        font-weight: bold;
+    
 }

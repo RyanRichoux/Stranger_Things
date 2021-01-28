@@ -1,7 +1,11 @@
 import React from 'react'
 
 const Messages = () =>{
-    return   <h2> Messages</h2>
+    return <> <h2> Messages</h2>
+     <h3>Subject of message</h3>
+      <h4>from: username</h4>
+      <h4>content</h4>
+</>
 }
 
 

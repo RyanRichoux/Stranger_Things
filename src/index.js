@@ -51,7 +51,7 @@ export default function App() {
               <Link to="/Register">Register</Link>
             </li>
             <li>
-              <Link to="/Register">Login</Link>
+              <Link to="/Login">Login</Link>
             </li>
           </ul>
         </nav>

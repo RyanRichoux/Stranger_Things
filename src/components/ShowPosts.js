@@ -3,7 +3,7 @@ import { fetchPosts } from '../api';
 
 
 const ShowPosts = () =>{
-    return   
+    return   <div className = "post">This is a post</div>
 }
 
 

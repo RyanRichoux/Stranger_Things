@@ -24,13 +24,20 @@ import {
 import { 
   fetchPosts
 } from './api'
-
+ //States
+ //Authed or not.
+ //Search?
+ //User Information
 
 
 export default function App() {
   return (
     <Router>
       <Header/>
+      <form>
+        <label>Search:</label>
+        <input/>
+      </form>
       <div>
         <nav>
           <ul>
@@ -66,7 +73,9 @@ export default function App() {
           </Route>
         </Switch>
       </div>
+      <ShowPosts/>
     </Router>
+    
   );
 }
 

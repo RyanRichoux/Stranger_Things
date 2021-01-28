@@ -1,7 +1,17 @@
 import React from 'react'
 
 const Register = () =>{
-    return   <h2> Register Page</h2>
+    return   (
+    <form>
+    <label>Username:</label>
+    <input/>
+    <label>Password:</label>
+    <input/>
+    <label>Email:</label>
+    <input/>
+    </form>
+
+    )
 }
 
 

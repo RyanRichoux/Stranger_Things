@@ -4,6 +4,7 @@ const Post = () =>{
     return   <h2> Post Page</h2>
 
 
+
 }
 
 /*fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {

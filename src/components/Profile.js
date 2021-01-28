@@ -1,7 +1,16 @@
 import React from 'react'
+import Messages from "./Messages"
 
 const Profile = () =>{
-    return   <h2> Profile Page</h2>
+    return  ( <div>
+     <h1> Profile Page</h1> 
+
+
+
+      <Messages/>
+    </div>
+    
+    )
 }
 
 

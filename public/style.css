@@ -9,6 +9,7 @@
     min-height: 200px;
     overflow: auto;
     max-height: 600px;
+    margin-bottom: 25px;
     display: flex;
     flex-direction: column;
     background: rgb(161, 188, 211);

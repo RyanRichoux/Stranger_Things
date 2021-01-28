@@ -3,7 +3,26 @@ import { fetchPosts } from '../api';
 
 
 const ShowPosts = () =>{
-    return   <div className = "post">This is a post</div>
+  // post id, title, price, description, author, location, createdAt, updatedAt, isAuthor
+  // edit button
+  // delete button 
+    return   <div className = "post">This is a post
+    <span> <h3>title and price</h3> </span>
+    <h4>description</h4>
+    <span>
+
+
+    <h4>location
+    author
+    createdAt
+    updatedAt
+    isAuthor</h4>
+
+    </span>
+    <button>Edit your post</button>
+    <button>delete your post</button>
+    </div>
+  
 }
 
 

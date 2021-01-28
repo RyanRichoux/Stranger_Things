@@ -9,8 +9,8 @@ const Register = () =>{
     <input/>
     <label>Email:</label>
     <input/>
+    <button type="submit">submit</button>
     </form>
-
     )
 }
 

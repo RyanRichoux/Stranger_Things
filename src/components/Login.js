@@ -1,8 +1,23 @@
 import React from 'react'
 
-const Login = () =>{
-    return   <h2> Login Page</h2>
+const Login = () => {
+    return  ( 
+    <>
+    <h2> Login Page</h2>
+
+       <form>
+        <label>Username:</label>
+        <input/>
+        <label>Password:</label>
+        <input/>
+        <button type="submit">submit</button>
+        </form>
+        </>
+    )
+
+
 }
+
 
 
 

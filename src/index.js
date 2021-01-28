@@ -74,6 +74,7 @@ export default function App() {
         </Switch>
       </div>
       <ShowPosts/>
+      <ShowPosts/>
     </Router>
     
   );

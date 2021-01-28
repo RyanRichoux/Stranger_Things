@@ -8,8 +8,7 @@ const ShowPosts = () =>{
   // delete button 
     return   <div className = "postBox">
     <span className = "postTitle"> title and price </span>
-    <span className = "postDescription"></span><h4>description</h4>
-   
+    <span className = "postDescription">description</span>
     <span className = "postLocation">location </span>
     <span className = "postAuthor">author</span>
     <span className = "postCreatedUpdated">createdAt ,updatedAt, isAuthor</span>

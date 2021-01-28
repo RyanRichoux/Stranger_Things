@@ -6,21 +6,14 @@ const ShowPosts = () =>{
   // post id, title, price, description, author, location, createdAt, updatedAt, isAuthor
   // edit button
   // delete button 
-    return   <div className = "post">This is a post
-    <span> <h3>title and price</h3> </span>
-    <h4>description</h4>
-    <span>
-
-
-    <h4>location
-    author
-    createdAt
-    updatedAt
-    isAuthor</h4>
-
-    </span>
-    <button>Edit your post</button>
-    <button>delete your post</button>
+    return   <div className = "postBox">
+    <span className = "postTitle"> title and price </span>
+    <span className = "postDescription"></span><h4>description</h4>
+   
+    <span className = "postLocation">location </span>
+    <span className = "postAuthor">author</span>
+    <span className = "postCreatedUpdated">createdAt ,updatedAt, isAuthor</span>
+    <button className = "postEdit">Edit your post</button><button className = "postDelete">delete your post</button>
     </div>
   
 }

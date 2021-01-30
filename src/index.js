@@ -21,9 +21,6 @@ import {
 
 } from './components';
 
-import { 
-  fetchPosts
-} from './api'
  //States
  //Authed or not.
  //Search?
@@ -32,7 +29,8 @@ import {
 
 export default function App() {
   const [showPosts, setShowPosts] = useState ([])
-  const [authorized, setAuthorized] = useState([])
+  const [authorized, setAuthorized] = useState(false)
+
 
 
 
@@ -67,7 +65,8 @@ export default function App() {
         <Switch>
           <Route path="/Post">
             <Post 
-              showPosts ={setShowPosts}
+              authorized = {authorized}
+              
               />
           </Route>
           <Route path="/Profile">
@@ -75,11 +74,12 @@ export default function App() {
           </Route>
           <Route path="/Register">
             <Register 
-            authorized = {setAuthorized}/>
+            setAuthorized = {setAuthorized}/>
           </Route>
           <Route path="/Login">
             <Login
-             authorized = {setAuthorized}
+             setAuthorized = {setAuthorized}
+             authorized = {authorized}
             />
           </Route>
         </Switch>

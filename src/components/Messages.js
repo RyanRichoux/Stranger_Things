@@ -1,11 +1,14 @@
 import React from 'react'
 
 const Messages = () =>{
-    return <> <h2> Messages</h2>
-     <h3>Subject of message</h3>
-      <h4>from: username</h4>
-      <h4>content</h4>
-</>
+    return <div className= "mainContainer">
+      <h2> Messages</h2>
+      <div className = "postBox">
+        <span className = "postTitle">Subject of message</span>
+        <span className = "postAuthor">from: username</span>
+        <span className = "postDescription">Content</span>
+      </div>
+    </div>
 }
 
 

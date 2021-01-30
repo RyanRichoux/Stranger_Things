@@ -1,10 +1,15 @@
 import React from 'react'
+import { default as ShowPosts } from './ShowPosts';
 
 const Post = () =>{
-    return   <h2> Post Page</h2>
+    return   (
+    
 
-
-
+  <>
+  <ShowPosts/>
+  <ShowPosts/>
+  </>
+    )
 }
 
 /*fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {

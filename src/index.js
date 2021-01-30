@@ -73,8 +73,6 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-      <ShowPosts/>
-      <ShowPosts/>
     </Router>
     
   );

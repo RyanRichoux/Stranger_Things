@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 const Login = () => {
+  const [username, setUsername] = useState ()
+  const [password, setPassword] = useState()
+  function authenticate (){
+    //checks that the user has entered stuff.
+    //Ajax request.
+    //Backend responds if user is good to go.
+
+  }
+
     return  ( 
     <>
     <h2> Login Page</h2>
 
        <form>
-        <label>Username:</label>
+        <label className = "userName">Username:</label>
         <input/>
-        <label>Password:</label>
+        <label className = "password">Password:</label>
         <input/>
-        <button type="submit">submit</button>
+        <button type="submit" >submit</button>
         </form>
         </>
     )

@@ -42,3 +42,13 @@
         font-weight: bold;
     
 }
+
+.button {
+    display: block;
+    background: grey;
+    border: 1px solid black;
+    padding: 2px;
+    text-decoration: none;
+    color: black;
+}
+

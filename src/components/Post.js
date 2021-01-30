@@ -12,7 +12,7 @@ const Post = () =>{
     )
 }
 
-/*fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {
+/*fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts', {
   method: "POST",
   headers: {
     'Content-Type': 'application/json',

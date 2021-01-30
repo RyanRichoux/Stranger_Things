@@ -2,6 +2,8 @@ import React from 'react'
 import Messages from "./Messages"
 
 const Profile = () =>{
+
+  
     return  ( <div>
      <h1> Profile Page</h1> 
 
@@ -16,7 +18,7 @@ const Profile = () =>{
 
 
 
-/*fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/me', {
+/*fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/users/me', {
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer TOKEN_STRING_HERE'

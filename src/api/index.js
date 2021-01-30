@@ -10,18 +10,16 @@ export const KEY = '';
 /**
  * This will make a call to the API for a single term and value (e.g. "person", and "unknown"), and return the result
  */
-export async function fetchPosts() {
-  try {
-    const response = await fetch(`${ BASE_URL }posts`);
-    const data = await response.json();
 
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
+export async function fetchPosts () { 
+  fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
+    .then(response => response.json())
+    .then(data => {
+          return data
+    })
+  .catch(console.error);}
 
-
+ 
 
 
 /*

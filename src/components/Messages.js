@@ -13,7 +13,7 @@ const Messages = () =>{
 
 
 
-/*fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts/5e8929ddd439160017553e06/messages', {
+/*fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/5e8929ddd439160017553e06/messages', {
   method: "POST",
   headers: {
     'Content-Type': 'application/json',

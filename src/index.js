@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -31,6 +31,12 @@ import {
 
 
 export default function App() {
+  const [showPosts, setShowPosts] = useState ([])
+  const [authorized, setAuthorized] = useState([])
+
+
+
+
   return (
     <Router>
       <Header/>
@@ -60,16 +66,21 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/Post">
-            <Post />
+            <Post 
+              showPosts ={setShowPosts}
+              />
           </Route>
           <Route path="/Profile">
             <Profile />
           </Route>
           <Route path="/Register">
-            <Register />
+            <Register 
+            authorized = {setAuthorized}/>
           </Route>
           <Route path="/Login">
-            <Login />
+            <Login
+             authorized = {setAuthorized}
+            />
           </Route>
         </Switch>
       </div>

@@ -1,4 +1,9 @@
-
+.mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
 
 .postBox {
@@ -43,12 +48,24 @@
     
 }
 
-.button {
-    display: block;
+.postEdit {
     background: grey;
     border: 1px solid black;
     padding: 2px;
     text-decoration: none;
     color: black;
+    max-width:70px;
 }
 
+.postDelete {
+    background: darkred;
+    border: 1px solid black;
+    padding: 2px;
+    text-decoration: none;
+    color: black;
+    max-width:70px;
+}
+
+.userName {
+    max-width: 100 px;
+}

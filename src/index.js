@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -21,9 +21,6 @@ import {
 
 } from './components';
 
-import { 
-  fetchPosts
-} from './api'
  //States
  //Authed or not.
  //Search?
@@ -31,6 +28,13 @@ import {
 
 
 export default function App() {
+  const [showPosts, setShowPosts] = useState ([])
+  const [authorized, setAuthorized] = useState(false)
+
+
+
+
+
   return (
     <Router>
       <Header/>
@@ -60,21 +64,26 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/Post">
-            <Post />
+            <Post 
+              authorized = {authorized}
+              
+              />
           </Route>
           <Route path="/Profile">
             <Profile />
           </Route>
           <Route path="/Register">
-            <Register />
+            <Register 
+            setAuthorized = {setAuthorized}/>
           </Route>
           <Route path="/Login">
-            <Login />
+            <Login
+             setAuthorized = {setAuthorized}
+             authorized = {authorized}
+            />
           </Route>
         </Switch>
       </div>
-      <ShowPosts/>
-      <ShowPosts/>
     </Router>
     
   );

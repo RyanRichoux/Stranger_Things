@@ -23,23 +23,16 @@ const ShowPosts = (props) =>{
       //checks to see if allPosts is true.
 
       //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
-    console.log(allPosts)
-    console.log (allPosts.data.posts[0].author.username)
-    console.log (allPosts.data.posts[0].description)
-    console.log (allPosts.data.posts[0].location)
-    console.log (allPosts.data.posts[0].author)
-    console.log (allPosts.data.posts[0].price)
-    console.log (allPosts.data.posts[0].isAuthor)
-    console.log (allPosts.data.posts[0].willDeliver)
+  
     
-    return allPosts.data.posts.map ( post => 
+    return allPosts.data.posts.map ( ({_id, title, description, location, author, createdAt, updatedAt}) => 
       <div className= "mainContainer">
-      <div className = "postBox">
-      <span className = "postTitle">Title</span>
-      <span className = "postDescription"></span><h4>Description: [Description]</h4>
-      <span className = "postLocation">Location: [Location] </span>
-      <span className = "postAuthor">Created By: [Author]</span>
-      <span className = "postCreatedUpdated">[CreatedAt], [UpdatedAt], [isAuthor]</span>
+      <div className = "postBox" id={_id}>
+      <span className = "postTitle">Title: {title}</span>
+      <span className = "postDescription"></span><h4>Description: {description}</h4>
+      <span className = "postLocation">Location: {location} </span>
+      <span className = "postAuthor">Created By: {author.username}</span>
+      <span className = "postCreatedUpdated">{createdAt}, {updatedAt}, [isAuthor]</span>
       <button className = "postEdit">Edit</button><button className = "postDelete">Delete</button>
       </div>
       </div>
@@ -48,22 +41,11 @@ const ShowPosts = (props) =>{
     
   }else{fetchPosts()}
   
-
- 
-    return  ( 
-     <div className= "mainContainer">
-            <div className = "postBox">
-        <span className = "postTitle">Title</span>
-        <span className = "postDescription"></span><h4>Description: [Description]</h4>
-        <span className = "postLocation">Location: [Location] </span>
-        <span className = "postAuthor">Created By: [Author]</span>
-        <span className = "postCreatedUpdated">[CreatedAt], [UpdatedAt], [isAuthor]</span>
-        <button className = "postEdit">Edit</button><button className = "postDelete">Delete</button>
-      </div>
-    </div>
+  return  ( 
+    <></>
     )
-  
 }
+
 
 
 

@@ -66,8 +66,10 @@ export default function App() {
           <Route path="/Post">
             <Post/>
           </Route>
-          <Route path="/Profile">
-            <Profile />
+          <Route path="/Profile" >
+            <Profile
+            authorized= {authorized}
+            />
           </Route>
           <Route path="/Register">
             <Register 

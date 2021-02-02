@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -11,6 +11,7 @@ import {
   Footer,
   Header,
   Login,
+  Messages,
   Post,
   Profile,
   Register,
@@ -20,11 +21,27 @@ import {
 
 } from './components';
 
+ //States
+ //Authed or not.
+ //Search?
+ //User Information
+
 
 export default function App() {
+  const [allPosts, setAllPosts] = useState (false)
+  const [authorized, setAuthorized] = useState(false) 
+
+
+
+
+
   return (
     <Router>
       <Header/>
+      <form>
+        <label>Search:</label>
+        <input/>
+      </form>
       <div>
         <nav>
           <ul>
@@ -38,7 +55,7 @@ export default function App() {
               <Link to="/Register">Register</Link>
             </li>
             <li>
-              <Link to="/Register">Login</Link>
+              <Link to="/Login">Login</Link>
             </li>
           </ul>
         </nav>
@@ -47,21 +64,31 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/Post">
-            <Post />
+            <Post/>
           </Route>
           <Route path="/Profile">
             <Profile />
           </Route>
           <Route path="/Register">
-            <Register />
+            <Register 
+            setAuthorized = {setAuthorized}/>
           </Route>
           <Route path="/Login">
-            <Login />
+            <Login
+             setAuthorized = {setAuthorized}
+             authorized = {authorized}
+            />
           </Route>
         </Switch>
       </div>
+      <ShowPosts
+      authorized = {authorized}
+      setAllPosts = {setAllPosts}
+      allPosts = {allPosts}/>
     </Router>
+    
   );
 }
 
 ReactDOM.render (<App/>, document.getElementById('app'))
+

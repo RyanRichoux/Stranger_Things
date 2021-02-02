@@ -6,6 +6,9 @@ const Footer = () =>{
 
 
 
+<<<<<<< HEAD
 // heeeeeelooooofkgkergihht
 
+=======
+>>>>>>> a0cec27c69341df62182656079d3371852162b0c
 export default Footer 

@@ -1,7 +1,26 @@
-import React from 'react'
+import React, {usestate} from 'react'
+
 
 const Messages = () =>{
-    return <div className= "mainContainer">
+  const {allMessages, setAllMessages} = useState(false)
+    
+  function fetchPosts () { 
+    return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/users/me')
+      .then(response => response.json())
+      .then(data => {
+        setAllMessages(data)  
+          console.log(allMessages)
+      })
+    .catch(console.error)
+    }
+    
+    
+    if (allPosts){
+      //checks to see if allPosts is true.
+
+      //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
+      return allPosts.data.posts.map ( ({}) => 
+       <div className= "mainContainer">
       <h2> Messages</h2>
       <div className = "postBox">
         <span className = "postTitle">Subject of message</span>
@@ -9,7 +28,16 @@ const Messages = () =>{
         <span className = "postDescription">Content</span>
       </div>
     </div>
+      )
+      
+      
+    }else{fetchPosts()}
+    
+    return  ( 
+      <></>
+      )
 }
+
 
 
 

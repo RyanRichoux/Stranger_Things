@@ -6,7 +6,7 @@ const Register = (props) =>{
   const {setAuthorized} = props
   const handleSubmit = (evt) =>{
     evt.preventDefault()
-    alert(`Submitting Name ${username} and ${password}`)
+    
     fetch('http://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/users/register', {
     method: "POST",
     headers: {
@@ -34,22 +34,18 @@ const Register = (props) =>{
     return   (
     <form onSubmit={handleSubmit}>
       <h1> Registration:</h1>
-    <label>Username:</label>
-    <input type = "text" required
-    onChange = {event => setUsername(event.target.value)}
-    />
-    <label>Password:</label>
-    <input type = "password" required
-    onChange = {event => setPassword(event.target.value)}
-    />
-    <button type="submit">submit</button>
-    <h1> {username}</h1>
+      <label>Username:</label>
+      <input type = "text" required
+      onChange = {event => setUsername(event.target.value)}
+      />
+      <label>Password:</label>
+      <input type = "password" required
+      onChange = {event => setPassword(event.target.value)}
+      />
+      <button type="submit">submit</button>
+    
     </form>
     )
 }
-
-
-
-
 
 export default Register 

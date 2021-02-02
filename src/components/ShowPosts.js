@@ -25,15 +25,15 @@ const ShowPosts = (props) =>{
       //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
   
     
-    return allPosts.data.posts.map ( ({_id, title, description, location, author, createdAt, updatedAt}) => 
+    return allPosts.data.posts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
       <div className= "mainContainer">
-      <div className = "postBox" id={_id}>
-      <span className = "postTitle">Title: {title}</span>
+      <div className = "postBox" key={_id}>
+      <span className = "postTitle">Title: {title} Price: {price}</span>
       <span className = "postDescription"></span><h4>Description: {description}</h4>
       <span className = "postLocation">Location: {location} </span>
       <span className = "postAuthor">Created By: {author.username}</span>
       <span className = "postCreatedUpdated">{createdAt}, {updatedAt}, [isAuthor]</span>
-      <button className = "postEdit">Edit</button><button className = "postDelete">Delete</button>
+      <button className = "postEdit">Edit</button><button className = "postDelete">Delete</button><button className = "postEdit">Message</button>
       </div>
       </div>
     )

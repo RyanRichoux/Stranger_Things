@@ -8,7 +8,7 @@ const Login = (props) =>{
 
   const handleSubmit = (evt) =>{
     evt.preventDefault()
-    alert(`Submitting Name ${username} and ${password}`)
+    alert(`Submitting Name ${username} and ${password}`) //for testing only.
     fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/users/login', {
       method: "POST",
       headers: {
@@ -24,9 +24,11 @@ const Login = (props) =>{
       .then(result => {
         console.log(result);
         if (result.success){
-          alert("Logged in.")
-          setAuthorized (result.data.token)
-        } else {alert("Failed to login.")}
+          alert("Logged in.") //for testing. 
+          setAuthorized (result.data.token) 
+        } else {alert("Failed to login.") 
+        //for testing
+      }
       })
       .catch(console.error)
       

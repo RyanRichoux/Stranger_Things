@@ -1,30 +1,38 @@
-import React from 'react'
+import React, {useState} from 'react';
 import { fetchPosts } from '../api';
 
 
-const ShowPosts = (Props) =>{
+const ShowPosts = (props) =>{
   // post id, title, price, description, author, location, createdAt, updatedAt, isAuthor
   // edit button
   // delete button
-  async function fetchPosts () { 
+  const {allPosts, setAllPosts} = props
+  const [thePosts, setThePosts] = useState ()
+   
+  function fetchPosts () { 
     return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
       .then(response => response.json())
       .then(data => {
+        setAllPosts(data)
+        
+        
           
-            return data
       })
     .catch(console.error)
     }
-
-    const postData = fetchPosts()
-    console.log (postData)
-  
-
-  
+    
+    
+    if (allPosts){
+    console.log(allPosts)
+    console.log (allPosts.data.posts[0].author.username)}
+    {fetchPosts()}
+    
+ 
     return  (
+      
      <div className= "mainContainer">
             <div className = "postBox">
-        <span className = "postTitle"></span>
+        <span className = "postTitle">Title</span>
         <span className = "postDescription"></span><h4>Description: [Description]</h4>
         <span className = "postLocation">Location: [Location] </span>
         <span className = "postAuthor">Created By: [Author]</span>

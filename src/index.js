@@ -28,8 +28,8 @@ import {
 
 
 export default function App() {
-  const [showPosts, setShowPosts] = useState ([])
-  const [authorized, setAuthorized] = useState(false)
+  const [allPosts, setAllPosts] = useState (false)
+  const [authorized, setAuthorized] = useState(false) 
 
 
 
@@ -64,10 +64,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/Post">
-            <Post 
-              authorized = {authorized}
-              
-              />
+            <Post/>
           </Route>
           <Route path="/Profile">
             <Profile />
@@ -84,9 +81,14 @@ export default function App() {
           </Route>
         </Switch>
       </div>
+      <ShowPosts
+      authorized = {authorized}
+      setAllPosts = {setAllPosts}
+      allPosts = {allPosts}/>
     </Router>
     
   );
 }
 
 ReactDOM.render (<App/>, document.getElementById('app'))
+

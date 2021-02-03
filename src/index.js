@@ -52,6 +52,9 @@ export default function App() {
               <Link to="/Profile">Profile</Link>
             </li>
             <li>
+              <Link to="/ShowPosts">See Posts</Link>
+            </li>
+            <li>
               <Link to="/Register">Register</Link>
             </li>
             <li>
@@ -63,13 +66,19 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/Post">
-            <Post/>
+          <Route path="/Post">           
+            <Post authorized= {authorized}/>
           </Route>
           <Route path="/Profile" >
             <Profile
             authorized= {authorized}
             />
+          </Route>
+          <Route path="/ShowPosts" >
+          <ShowPosts
+            authorized = {authorized}
+            setAllPosts = {setAllPosts}
+            allPosts = {allPosts}/>
           </Route>
           <Route path="/Register">
             <Register 
@@ -83,10 +92,7 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-      <ShowPosts
-      authorized = {authorized}
-      setAllPosts = {setAllPosts}
-      allPosts = {allPosts}/>
+
     </Router>
     
   );

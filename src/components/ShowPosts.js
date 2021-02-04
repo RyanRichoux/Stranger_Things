@@ -12,21 +12,21 @@ const ShowPosts = (props) =>{
   //const [postId, setPostId] = useState(null);
 
 
- const handleDelete = async (deletePost) => {
-console.log('deletePost: ', deletePost)
-const res = await fetch (`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${deletePost}`, {
-  method: 'DELETE',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${authorized}`
-  }
-}) 
-const data = await res.json();
-console.log('data ', data);
-if(data){
-  const newData = allPosts.data.posts.filter(post => post._id !== deletePost)
-  setAllPosts(newData);
-}
+  const handleDelete = async (deletePost) => {
+    console.log('deletePost: ', deletePost)
+    const res = await fetch (`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${deletePost}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authorized}`
+      }
+    }) 
+    const data = await res.json();
+    console.log('data ', data);
+    if(data){
+      fetchPosts ()
+    }
+    
  }
 
 

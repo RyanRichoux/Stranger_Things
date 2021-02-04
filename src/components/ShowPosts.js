@@ -59,7 +59,7 @@ const ShowPosts = (props) =>{
         setPostId(_id)
       }}>Edit</button>
       <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
-      <button className = "postEdit" onClick = {() => <Messages id ={_id}/>}>Message</button>
+      <button className = "postEdit" onClick = {() => <Messages/>}>Message</button>
       </div>
       
     )

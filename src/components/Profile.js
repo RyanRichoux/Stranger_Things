@@ -12,12 +12,12 @@ const Profile = (props) =>{
             'Authorization': `Bearer ${authorized}`
           },
         }).then(response => response.json())
-          .then(result => {
+          .then(result 
+            => {
             console.log(result);
           })
           .catch(console.error);}
-                   
-      
+
       if (authorized && allMessages){
 
         return allMessages.data.messages.map ( ({_id, post ,fromUser, content }) => 

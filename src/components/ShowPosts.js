@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { fetchPosts } from '../api';
+import Update from "./Update"
 
 
 const ShowPosts = (props) =>{
@@ -7,7 +8,28 @@ const ShowPosts = (props) =>{
   // edit button
   // delete button
   const {allPosts, setAllPosts} = props
-    
+  const {authorized} = props
+  //const [postId, setPostId] = useState(null);
+
+
+ const handleDelete = async (deletePost) => {
+console.log('deletePost: ', deletePost)
+const res = await fetch (`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${deletePost}`, {
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${authorized}`
+  }
+}) 
+const data = await res.json();
+console.log('data ', data);
+if(data){
+  const newData = allPosts.data.posts.filter(post => post._id !== deletePost)
+  setAllPosts(newData);
+}
+ }
+
+
   function fetchPosts () { 
     return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
       .then(response => response.json())
@@ -18,12 +40,21 @@ const ShowPosts = (props) =>{
     .catch(console.error)
     }
     
-    
+    // {
+
+    //   <Update allPosts={posts}
+    //   setAllPosts={setAllPosts} postId={postId}
+    //   />
+    // }
+
+
+
+
     if (allPosts){
       //checks to see if allPosts is true.
 
       //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
-  
+  console.log(allPosts)
     
     return allPosts.data.posts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
       <div className= "mainContainer">
@@ -33,7 +64,11 @@ const ShowPosts = (props) =>{
       <span className = "postLocation">Location: {location} </span>
       <span className = "postAuthor">Created By: {author.username}</span>
       <span className = "postCreatedUpdated">{createdAt}, {updatedAt}, [isAuthor]</span>
-      <button className = "postEdit">Edit</button><button className = "postDelete">Delete</button><button className = "postEdit">Message</button>
+      <button type="button" className="postEdit" onClick={() => {
+        setPostId(_id)
+      }}>Edit</button>
+      <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
+      <button className = "postEdit">Message</button>
       </div>
       </div>
     )

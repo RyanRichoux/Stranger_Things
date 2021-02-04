@@ -75,10 +75,12 @@ export default function App() {
             />
           </Route>
           <Route path="/ShowPosts" >
+          <div className= "mainContainer">
           <ShowPosts
             authorized = {authorized}
             setAllPosts = {setAllPosts}
             allPosts = {allPosts}/>
+            </div>
           </Route>
           <Route path="/Register">
             <Register 

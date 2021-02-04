@@ -40,24 +40,15 @@ const ShowPosts = (props) =>{
     .catch(console.error)
     }
     
-    // {
-
-    //   <Update allPosts={posts}
-    //   setAllPosts={setAllPosts} postId={postId}
-    //   />
-    // }
-
-
 
 
     if (allPosts){
       //checks to see if allPosts is true.
 
       //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
-  console.log(allPosts)
-    
+     
     return allPosts.data.posts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
-      <div className= "mainContainer">
+      
       <div className = "postBox" key={_id}>
       <span className = "postTitle">Title: {title} Price: {price}</span>
       <span className = "postDescription"></span><h4>Description: {description}</h4>
@@ -70,7 +61,7 @@ const ShowPosts = (props) =>{
       <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
       <button className = "postEdit">Message</button>
       </div>
-      </div>
+      
     )
     
     

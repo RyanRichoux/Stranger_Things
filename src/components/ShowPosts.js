@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { fetchPosts } from '../api';
-import Update from "./Update"
+import Messages from "./Messages"
 
 
 const ShowPosts = (props) =>{
@@ -59,7 +59,7 @@ const ShowPosts = (props) =>{
         setPostId(_id)
       }}>Edit</button>
       <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
-      <button className = "postEdit">Message</button>
+      <button className = "postEdit" onClick = {() => <Messages id ={_id}/>}>Message</button>
       </div>
       
     )

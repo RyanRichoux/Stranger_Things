@@ -1,12 +1,13 @@
-import React, {usestate} from 'react'
+import React, {useState} from 'react'
 
 
 const Messages = (props) =>{
-  const {_id} = props
+  const {_id, authorized} = props
   const {message, setMessage} = useState("")
 
   console.log ("You made it here!")
-
+  const handleSubmit = (evt) =>{
+    evt.preventDefault()
   fetch(`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${_id}/messages`, {
     method: "POST",
     headers: {
@@ -19,6 +20,7 @@ const Messages = (props) =>{
       console.log(result);
     })
     .catch(console.error);
+  }
   
     
     return  ( 
@@ -31,7 +33,7 @@ const Messages = (props) =>{
       <button type="submit">submit</button>
     
     </form>
-      )
+    )
 }
 
 

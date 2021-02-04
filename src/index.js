@@ -31,10 +31,6 @@ export default function App() {
   const [allPosts, setAllPosts] = useState (false)
   const [authorized, setAuthorized] = useState(false) 
 
-
-
-
-
   return (
     <Router>
       <Header/>
@@ -92,6 +88,9 @@ export default function App() {
              authorized = {authorized}
             />
           </Route>
+          
+          <Route path="/Messages"><Messages/></Route>
+          
         </Switch>
       </div>
 

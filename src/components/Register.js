@@ -1,9 +1,13 @@
 import React, {useState } from 'react';
 
 const Register = (props) =>{
-  const [username, setUsername] = useState('')
+  const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
   const {setAuthorized} = props
+  
+ 
+
+ 
   const handleSubmit = (evt) =>{
     evt.preventDefault()
     
@@ -12,15 +16,11 @@ const Register = (props) =>{
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      user: {
-        username: JSON.stringify({username}) , 
-        password: JSON.stringify({password}), 
-      }
-    })
+    body: JSON.stringify({user})
   }).then(response => response.json())
     .then(result => {
       console.log(result)
+      
       if (result.success){
         alert("Registered.")
         setAuthorized(result.data.token)
@@ -28,19 +28,19 @@ const Register = (props) =>{
     })
     .catch(console.error);
     
-    console.log (JSON.stringify({username}))
+    
   }
 
     return   (
     <form onSubmit={handleSubmit}>
       <h1> Registration:</h1>
       <label>Username:</label>
-      <input type = "text" required
-      onChange = {event => setUsername(event.target.value)}
+      <input name = "Username" required
+      onChange = {e => setUser({ ...user, username: e.target.value} )}
       />
       <label>Password:</label>
       <input type = "password" required
-      onChange = {event => setPassword(event.target.value)}
+      onChange = {e => setUser({ ...user, password: e.target.value} )}
       />
       <button type="submit">submit</button>
     

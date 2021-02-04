@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { default as ShowPosts } from './ShowPosts';
 
 const Post = (props) =>{
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [delivery, setDelivery] = useState('')
-  const [price, setPrice] = useState('')
+  
   const {authorized, setAuthorized} = props
+  const [post, setPost] = useState('')
+   
+
 
   const handleSubmit = (evt) =>{
     evt.preventDefault()
@@ -18,17 +18,11 @@ const Post = (props) =>{
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authorized}`
       },
-      body: JSON.stringify({
-        post: {
-          title: JSON.stringify({title}), 
-          description: JSON.stringify({description}),
-          price: JSON.stringify({price}),
-          willDeliver: false //need to update this to an actual variable.
-        }
-      })
+      body: JSON.stringify({post})
     }).then(response => response.json())
       .then(result => {
-        console.log({title})
+      
+        
         console.log(result);
       })
       .catch(console.error);
@@ -37,21 +31,25 @@ const Post = (props) =>{
     return   (
       <form onSubmit={handleSubmit}>
         <h1> Create New Post:</h1>
-        <label>title:</label>
+        <h3>Title:</h3>
         <input type = "text" required
-        onChange = {event => setTitle(event.target.value)}
+        placeholder = "text"
+        onChange = {e => setPost({ ...post, title: e.target.value} )}
         />
-        <label>description:</label>
+        <h3>Description:</h3>
         <input type = "text" required
-        onChange = {event => setDescription(event.target.value)}
+        placeholder = "text"
+        onChange = {e => setPost({ ...post, description: e.target.value})}
         />
-        <label>price:</label>
+        <h3>Price:</h3>
         <input type = "text" required
-        onChange = {event => setPrice(event.target.value)}
+        placeholder = "text"
+        onChange = {e => setPost({ ...post, price: e.target.value})}
         />
-        <label>delivery:</label>
+        <h3>Delivery:</h3>
         <input type = "text" required
-        onChange = {event => setDelivery(event.target.value)} //This needs to be a boolean.
+        placeholder = "text"
+        onChange = {e => setPost({ ...post, willDeliver: e.target.value})} //This needs to be a boolean.
         />
         <button type="submit">submit</button>
       

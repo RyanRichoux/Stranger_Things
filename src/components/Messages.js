@@ -1,40 +1,36 @@
 import React, {usestate} from 'react'
 
 
-const Messages = () =>{
-  const {allMessages, setAllMessages} = useState(false)
-    
-  function fetchPosts () { 
-    return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/users/me')
-      .then(response => response.json())
-      .then(data => {
-        setAllMessages(data)  
-          console.log(allMessages)
-      })
-    .catch(console.error)
-    }
-    
-    
-    if (allPosts){
-      //checks to see if allPosts is true.
+const Messages = (props) =>{
+  const {_id} = props
+  const {message, setMessage} = useState("")
 
-      //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
-      return allPosts.data.posts.map ( ({}) => 
-       <div className= "mainContainer">
-      <h2> Messages</h2>
-      <div className = "postBox">
-        <span className = "postTitle">Subject of message</span>
-        <span className = "postAuthor">from: username</span>
-        <span className = "postDescription">Content</span>
-      </div>
-    </div>
-      )
-      
-      
-    }else{fetchPosts()}
+  console.log ("You made it here!")
+
+  fetch(`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${_id}/messages`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authorized}`
+    },
+    body: JSON.stringify({message})
+  }).then(response => response.json())
+    .then(result => {
+      console.log(result);
+    })
+    .catch(console.error);
+  
     
     return  ( 
-      <></>
+      <form onSubmit={handleSubmit}>
+      <h1> Message:</h1>
+      <label>Message:</label>
+      <input name = "Username" required
+      onChange = {e => setMessage({ ...message, content: e.target.value} )}
+      />
+      <button type="submit">submit</button>
+    
+    </form>
       )
 }
 

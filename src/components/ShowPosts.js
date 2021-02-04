@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { fetchPosts } from '../api';
-import Update from "./Update"
+import Messages from "./Messages"
 
 
 const ShowPosts = (props) =>{
@@ -12,21 +12,21 @@ const ShowPosts = (props) =>{
   //const [postId, setPostId] = useState(null);
 
 
- const handleDelete = async (deletePost) => {
-console.log('deletePost: ', deletePost)
-const res = await fetch (`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${deletePost}`, {
-  method: 'DELETE',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${authorized}`
-  }
-}) 
-const data = await res.json();
-console.log('data ', data);
-if(data){
-  const newData = allPosts.data.posts.filter(post => post._id !== deletePost)
-  setAllPosts(newData);
-}
+  const handleDelete = async (deletePost) => {
+    console.log('deletePost: ', deletePost)
+    const res = await fetch (`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${deletePost}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authorized}`
+      }
+    }) 
+    const data = await res.json();
+    console.log('data ', data);
+    if(data){
+      fetchPosts ()
+    }
+    
  }
 
 
@@ -40,24 +40,15 @@ if(data){
     .catch(console.error)
     }
     
-    // {
-
-    //   <Update allPosts={posts}
-    //   setAllPosts={setAllPosts} postId={postId}
-    //   />
-    // }
-
-
 
 
     if (allPosts){
       //checks to see if allPosts is true.
 
       //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
-  console.log(allPosts)
-    
+     
     return allPosts.data.posts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
-      <div className= "mainContainer">
+      
       <div className = "postBox" key={_id}>
       <span className = "postTitle">Title: {title} Price: {price}</span>
       <span className = "postDescription"></span><h4>Description: {description}</h4>
@@ -68,9 +59,9 @@ if(data){
         setPostId(_id)
       }}>Edit</button>
       <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
-      <button className = "postEdit">Message</button>
+      <button className = "postEdit" onClick = {() => <Messages/>}>Message</button>
       </div>
-      </div>
+      
     )
     
     

@@ -12,9 +12,7 @@ const Profile = (props) =>{
             'Authorization': `Bearer ${authorized}`
           },
         }).then(response => response.json())
-          .then(result 
-            => {
-            console.log(result);
+          .then(result => {console.log(result);
           })
           .catch(console.error);}
 

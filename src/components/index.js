@@ -6,7 +6,6 @@ export { default as Messages } from './Messages';
 export { default as Post } from './Post';
 export { default as Profile } from './Profile';
 export { default as Register } from './Register';
-export { default as Search } from './Search';
 export { default as ShowPosts } from './ShowPosts';
 
 

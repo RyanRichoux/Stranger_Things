@@ -35,8 +35,10 @@ export default function App() {
     <Router>
       <Header/>
       <form>
-        <label>Search:</label>
-        <input/>
+        <input type="text" className="search" placeholder="Search.."
+      />
+    <button>Search</button>
+      < Search />
       </form>
       <div>
         <nav>

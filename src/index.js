@@ -15,7 +15,7 @@ import {
   Post,
   Profile,
   Register,
-  Search,
+  //Search,
   ShowPosts
   
 
@@ -29,16 +29,15 @@ import {
 
 export default function App() {
   const [allPosts, setAllPosts] = useState (false)
-  const [authorized, setAuthorized] = useState(false) 
+  const [authorized, setAuthorized] = useState(false)
+  const [searchValue, setSearchValue] = useState(false) 
 
   return (
     <Router>
       <Header/>
       <form>
-        <input type="text" className="search" placeholder="Search.."
-      />
-    <button>Search</button>
-      < Search />
+        <input type="text" className="search" placeholder="Search..." onChange = {e => setSearchValue(e.target.value )}/>
+    <Link to = "/ShowPosts">Search</Link> 
       </form>
       <div>
         <nav>
@@ -77,7 +76,9 @@ export default function App() {
           <ShowPosts
             authorized = {authorized}
             setAllPosts = {setAllPosts}
-            allPosts = {allPosts}/>
+            allPosts = {allPosts}
+            searchValue = {searchValue}/>
+            
             </div>
           </Route>
           <Route path="/Register">

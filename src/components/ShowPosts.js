@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { fetchPosts } from '../api';
 import Messages from "./Messages"
 
@@ -7,8 +7,10 @@ const ShowPosts = (props) =>{
   // post id, title, price, description, author, location, createdAt, updatedAt, isAuthor
   // edit button
   // delete button
-  const {allPosts, setAllPosts} = props
-  const {authorized} = props
+  const {allPosts, setAllPosts, authorized, searchValue} = props
+  let postMatches = []
+  
+
   //const [postId, setPostId] = useState(null);
 
   function callMessages(id,authorized){
@@ -41,7 +43,7 @@ const ShowPosts = (props) =>{
         </form>
       )
     }
-    return console.log ("Button was clicked.")
+    
   }
 
 
@@ -67,20 +69,26 @@ const ShowPosts = (props) =>{
     return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
       .then(response => response.json())
       .then(data => {
-        setAllPosts(data)  
-          
+        console.log(searchValue)
+        if (searchValue){
+          postMatches = data.data.posts.filter(post => post.title.toLowerCase().includes(searchValue.toLowerCase()))
+          console.log (postMatches) 
+          } else { 
+          postMatches = data.data.posts
+          console.log(postMatches)
+          }
+        setAllPosts(postMatches)  
+        console.log (allPosts)  
       })
     .catch(console.error)
     }
     
-
-
-    if (allPosts){
-      //checks to see if allPosts is true.
-
-      //const {author, description, location, price, isAuthor, willDeliver} = allPosts.data.posts[0]
+    
+    
+    if (allPosts){ 
+    
      
-    return allPosts.data.posts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
+    return allPosts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
       
       <div className = "postBox" key={_id}>
         <span className = "postTitle">Title: {title} Price: {price}</span>

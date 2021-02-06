@@ -15,7 +15,7 @@ import {
   Post,
   Profile,
   Register,
-  //Search,
+  Search,
   ShowPosts
   
 
@@ -30,14 +30,24 @@ import {
 export default function App() {
   const [allPosts, setAllPosts] = useState (false)
   const [authorized, setAuthorized] = useState(false)
-  const [searchValue, setSearchValue] = useState(false) 
+  const [searchValue, setSearchValue] = useState('') 
+
+  function fetchPosts () { 
+    return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
+      .then(response => response.json())
+      .then(data => {
+        setAllPosts(data.data.posts)
+      })
+    .catch(console.error)}
+    
+  fetchPosts()
 
   return (
     <Router>
       <Header/>
       <form>
         <input type="text" className="search" placeholder="Search..." onChange = {e => setSearchValue(e.target.value )}/>
-    <Link to = "/ShowPosts">Search</Link> 
+    <Link to = "/Search">Search</Link> 
       </form>
       <div>
         <nav>
@@ -91,6 +101,15 @@ export default function App() {
              authorized = {authorized}
             />
           </Route>
+          <Route path="/Search">
+            <Search
+             allPosts = {allPosts}
+             authorized = {authorized}
+             searchValue = {searchValue}
+             setSearchValue = {setSearchValue}
+             setAllPosts = {setAllPosts}
+            />
+          </Route>
           
           <Route path="/Messages"><Messages/></Route>
           
@@ -101,6 +120,8 @@ export default function App() {
     
   );
 }
+
+
 
 ReactDOM.render (<App/>, document.getElementById('app'))
 

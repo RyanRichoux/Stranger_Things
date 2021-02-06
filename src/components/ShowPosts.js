@@ -8,14 +8,17 @@ const ShowPosts = (props) =>{
   // edit button
   // delete button
   const {allPosts, setAllPosts, authorized, searchValue} = props
+  const [message, setMessage] = useState("")
+  
   let postMatches = []
+  
   
 
   //const [postId, setPostId] = useState(null);
 
   function callMessages(id,authorized){
     
-    const {message, setMessage} = useState("")
+    
     console.log (id +" "+ authorized)
     const handleSubmit = (evt) =>{
         evt.preventDefault()
@@ -58,31 +61,20 @@ const ShowPosts = (props) =>{
     }) 
     const data = await res.json();
     console.log('data ', data);
-    if(data){
-      fetchPosts ()
-    }
-    
+        
  }
+ function fetchPosts () { 
+  return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
+    .then(response => response.json())
+    .then(data => {
+      console.log(searchValue)
+      setAllPosts(data.data.posts)
+           
+
+    })
+  .catch(console.error)}
 
 
-  function fetchPosts () { 
-    return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
-      .then(response => response.json())
-      .then(data => {
-        console.log(searchValue)
-        if (searchValue){
-          postMatches = data.data.posts.filter(post => post.title.toLowerCase().includes(searchValue.toLowerCase()))
-          console.log (postMatches) 
-          } else { 
-          postMatches = data.data.posts
-          console.log(postMatches)
-          }
-        setAllPosts(postMatches)  
-        console.log (allPosts)  
-      })
-    .catch(console.error)
-    }
-    
     
     
     if (allPosts){ 
@@ -96,9 +88,7 @@ const ShowPosts = (props) =>{
         <span className = "postLocation">Location: {location} </span>
         <span className = "postAuthor">Created By: {author.username}</span>
         <span className = "postCreatedUpdated">{createdAt}, {updatedAt}, [isAuthor]</span>
-        <button type="button" className="postEdit" onClick={() => {
-          setPostId(_id)
-        }}>Edit</button>
+
         <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
         <button className = "postEdit" onClick = {callMessages(_id,authorized)}>Message</button>
       </div>

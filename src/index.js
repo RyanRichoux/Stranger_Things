@@ -9,8 +9,6 @@ import {
 } from "react-router-dom"
 
 import {
-  Footer,
-  Header,
   Login,
   Messages,
   Post,
@@ -22,6 +20,7 @@ import {
 
 } from './components';
 
+import *  as ReactBootstrap from "react-bootstrap";
 
 export default function App() {
   const [allPosts, setAllPosts] = useState (false)
@@ -41,13 +40,13 @@ export default function App() {
 
   return (
     <Router>
-      <Header/>
-      <form>
+      
+      {/* <form>
         <input type="text" className="search" placeholder="Search..." onChange = {e => setSearchValue(e.target.value )}/>
     <Link to = "/Search">Search</Link> 
-      </form>
+      </form> */}
       <div>
-        <nav>
+        {/* { <nav>
           <ul>
           {authorized ? <li>
               <Link to="/Post">Post</Link>
@@ -65,7 +64,33 @@ export default function App() {
               <Link to="/Login">Login</Link>
             </li> : null}
           </ul>
-        </nav>
+            </nav>  */
+            
+        <ReactBootstrap.Navbar bg="dark" expand="xl" variant="dark">
+        <ReactBootstrap.Navbar.Brand href="#home">Stranger's Thing Craiglist</ReactBootstrap.Navbar.Brand>
+        <ReactBootstrap.Nav className="mr-auto">
+        {authorized ? <ReactBootstrap.Nav.Link href="/Post">Post</ReactBootstrap.Nav.Link> :null }
+        {authorized ? <ReactBootstrap.Nav.Link href="/Profile">Profile</ReactBootstrap.Nav.Link> :null }
+          <ReactBootstrap.Nav.Link href="/ShowPosts">See Posts</ReactBootstrap.Nav.Link>
+        {!authorized? <ReactBootstrap.Nav.Link href="/Register">Register</ReactBootstrap.Nav.Link> :null}
+        {!authorized?  <ReactBootstrap.Nav.Link href="/Login">Login</ReactBootstrap.Nav.Link> :null}
+        </ReactBootstrap.Nav>
+        <ReactBootstrap.Form inline>
+          <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" onChange = {e => setSearchValue(e.target.value )}/>
+          <Link to = "/Search">Search</Link> 
+        </ReactBootstrap.Form>
+      </ReactBootstrap.Navbar>
+            
+            
+            
+            
+            }
+
+
+        
+        
+        
+        
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

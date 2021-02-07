@@ -16,6 +16,7 @@ const Search = (props) =>{
     
     const handleDelete = async (deletePost) => {
         console.log('deletePost: ', deletePost)
+        alert('Post is deleted!')
         const res = await fetch (`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${deletePost}`, {
           method: 'DELETE',
           headers: {

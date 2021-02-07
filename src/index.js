@@ -21,11 +21,6 @@ import {
 
 } from './components';
 
- //States
- //Authed or not.
- //Search?
- //User Information
-
 
 export default function App() {
   const [allPosts, setAllPosts] = useState (false)

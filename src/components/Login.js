@@ -2,9 +2,15 @@ import React, {useState} from 'react';
 
 const Login = (props) =>{
   const [user, setUser] = useState('')
-  const [password, setPassword] = useState('')
-  const {setAuthorized, authorized} = props
+  const {setAuthorized, setCurrentUser, currentUser} = props
    
+
+  function helperHandleSubmit (e) {
+    setUser({ ...user, password: e.target.value})
+    setCurrentUser(user.username )
+    console.log(currentUser)
+
+  }
   
 
   const handleSubmit = (evt) =>{
@@ -21,7 +27,8 @@ const Login = (props) =>{
         
         if (result.success){
           alert("Logged in.") //for testing. 
-          setAuthorized (result.data.token) 
+          setAuthorized (result.data.token)
+           
         } else {alert("Failed to login.") 
         //for testing
       }
@@ -35,11 +42,12 @@ const Login = (props) =>{
       <h1> Login:</h1>
       <label>Username:</label>
       <input name = "Username" required
-      onChange = {e => setUser({ ...user, username: e.target.value} )}
+      onChange = {e => 
+        setUser({ ...user, username: e.target.value} )}
       />
       <label>Password:</label>
       <input type = "password" required
-      onChange = {e => setUser({ ...user, password: e.target.value} )}
+      onChange = {e => helperHandleSubmit(e)}
       />
       <button type="submit">submit</button>
     

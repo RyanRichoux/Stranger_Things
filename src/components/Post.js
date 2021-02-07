@@ -3,7 +3,7 @@ import { default as ShowPosts } from './ShowPosts';
 
 const Post = (props) =>{
   
-  const {authorized, setAuthorized} = props
+  const {authorized} = props
   const [post, setPost] = useState('')
    
 
@@ -47,10 +47,13 @@ const Post = (props) =>{
         onChange = {e => setPost({ ...post, price: e.target.value})}
         />
         <h3>Delivery:</h3>
-        <input type = "text" required
-        placeholder = "text"
+        
+        <input type = "radio" required id ="willDeliveryes" name = "willDeliver" value ="true"
         onChange = {e => setPost({ ...post, willDeliver: e.target.value})} //This needs to be a boolean.
-        />
+        /><label for="willDeliveryes">Yes</label>
+        <input type = "radio" required id ="willDeliverno" name = "willDeliver" value ="false" 
+        onChange = {e => setPost({ ...post, willDeliver: e.target.value})} //This needs to be a boolean.
+        /><label for="willDeliverno">No</label>
         <button type="submit">submit</button>
       
       </form>

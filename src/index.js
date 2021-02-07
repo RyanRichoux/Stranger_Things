@@ -30,6 +30,7 @@ import {
 export default function App() {
   const [allPosts, setAllPosts] = useState (false)
   const [authorized, setAuthorized] = useState(false)
+  const [currentUser, setCurrentUser] = useState('')
   const [searchValue, setSearchValue] = useState('') 
 
   function fetchPosts () { 
@@ -52,21 +53,21 @@ export default function App() {
       <div>
         <nav>
           <ul>
-            <li>
+          {authorized ? <li>
               <Link to="/Post">Post</Link>
-            </li>
-            <li>
+            </li>: null}
+            {authorized ?<li>
               <Link to="/Profile">Profile</Link>
-            </li>
+            </li>: null}
             <li>
               <Link to="/ShowPosts">See Posts</Link>
             </li>
-            <li>
+            {!authorized?<li>
               <Link to="/Register">Register</Link>
-            </li>
-            <li>
+            </li> : null}
+            {!authorized?<li>
               <Link to="/Login">Login</Link>
-            </li>
+            </li> : null}
           </ul>
         </nav>
 
@@ -85,6 +86,7 @@ export default function App() {
           <div className= "mainContainer">
           <ShowPosts
             authorized = {authorized}
+            currentUser = {currentUser}
             setAllPosts = {setAllPosts}
             allPosts = {allPosts}
             searchValue = {searchValue}/>
@@ -92,14 +94,16 @@ export default function App() {
             </div>
           </Route>
           <Route path="/Register">
-            <Register 
-            setAuthorized = {setAuthorized}/>
-          </Route>
+            {!authorized? <Register 
+            setAuthorized = {setAuthorized}/>: null}
+          </Route> 
           <Route path="/Login">
-            <Login
-             setAuthorized = {setAuthorized}
-             authorized = {authorized}
-            />
+            {!authorized? <Login
+            currentUser = {currentUser}
+            setCurrentUser = {setCurrentUser}
+            setAuthorized = {setAuthorized}
+            authorized = {authorized}
+            /> : null}
           </Route>
           <Route path="/Search">
             <Search

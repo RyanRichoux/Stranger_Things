@@ -4,13 +4,8 @@ import Messages from "./Messages"
 
 
 const ShowPosts = (props) =>{
-  // post id, title, price, description, author, location, createdAt, updatedAt, isAuthor
-  // edit button
-  // delete button
   const {allPosts, setAllPosts, authorized, searchValue, currentUser} = props
   
-  
-
   const handleDelete = async (deletePost) => {
     console.log('deletePost: ', deletePost)
     const res = await fetch (`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${deletePost}`, {

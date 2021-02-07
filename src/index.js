@@ -29,15 +29,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState('')
   const [searchValue, setSearchValue] = useState('') 
 
-  function fetchPosts () { 
-    return fetch('https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts')
-      .then(response => response.json())
-      .then(data => {
-        setAllPosts(data.data.posts)
-      })
-    .catch(console.error)}
-    
-  fetchPosts()
+
 
   return (
     <Router>

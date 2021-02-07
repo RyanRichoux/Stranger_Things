@@ -16,7 +16,8 @@ import {
   Profile,
   Register,
   Search,
-  ShowPosts
+  ShowPosts,
+  YourPosts
   
 
 } from './components';
@@ -52,7 +53,10 @@ export default function App() {
               <Link to="/Post">Post</Link>
             </li>: null}
             {authorized ?<li>
-              <Link to="/Profile">Profile</Link>
+              <Link to="/Profile">Messages</Link>
+            </li>: null}
+            {authorized ?<li>
+              <Link to="/YourPosts">Your Posts</Link>
             </li>: null}
             <li>
               <Link to="/ShowPosts">See Posts</Link>
@@ -75,8 +79,15 @@ export default function App() {
           <Route path="/Profile" >
             <Profile
             authorized= {authorized}
+            currentUser = {currentUser}
             />
-          </Route>
+            </Route>
+          <Route path="/YourPosts" >
+            <YourPosts
+            authorized= {authorized}
+            currentUser = {currentUser}
+            />
+            </Route>
           <Route path="/ShowPosts" >
           <div className= "mainContainer">
           <ShowPosts

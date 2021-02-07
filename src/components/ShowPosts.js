@@ -67,9 +67,4 @@ const ShowPosts = (props) =>{
     )
 }
 
-
-
-
-
-
 export default ShowPosts 

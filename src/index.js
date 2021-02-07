@@ -21,11 +21,6 @@ import {
 
 } from './components';
 
- //States
- //Authed or not.
- //Search?
- //User Information
-
 
 export default function App() {
   const [allPosts, setAllPosts] = useState (false)
@@ -108,6 +103,7 @@ export default function App() {
           <Route path="/Search">
             <Search
              allPosts = {allPosts}
+             currentUser = {currentUser}
              authorized = {authorized}
              searchValue = {searchValue}
              setSearchValue = {setSearchValue}

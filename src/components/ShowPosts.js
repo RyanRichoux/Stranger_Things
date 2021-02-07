@@ -42,7 +42,6 @@ const ShowPosts = (props) =>{
         onChange = {e => setMessage({ ...message, content: e.target.value} )}
         />
         <button type="submit">submit</button>
-      
         </form>
       )
     }
@@ -73,11 +72,8 @@ const ShowPosts = (props) =>{
 
     })
   .catch(console.error)}
-
-
-    
-    
-    if (allPosts){ 
+  
+  if (allPosts){ 
     
      
     return allPosts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
@@ -90,7 +86,9 @@ const ShowPosts = (props) =>{
         <span className = "postCreatedUpdated">{createdAt}, {updatedAt}, [isAuthor]</span>
 
         <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
-        <button className = "postEdit" onClick = {callMessages(_id,authorized)}>Message</button>
+        <Messages
+        _id = {_id}
+        authorized = {authorized}/>
       </div>
       
     )

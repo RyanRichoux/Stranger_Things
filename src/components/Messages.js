@@ -1,13 +1,52 @@
 import React, {useState} from 'react'
+import Popup from 'reactjs-popup';
 
 
-const Messages = (props) =>{
+
+const Messages = (props) => {
   const {_id, authorized} = props
-  const {message, setMessage} = useState("")
+  const [message, setMessage] = useState("")
+  return (<Popup
+    trigger={<button className="button"> Message </button>}
+    modal
+    nested
+  >
+    {close => (
+      <div className="modal">
+        <button className="close" onClick={close}>
+          &times;
+        </button>
+        <div className="header"> Send Message </div>
+        <div className="content"> <label>Message:</label>
+     	 <input name = "Username" required
+      	onChange = {e => setMessage({...message, content:e.target.value})}
+     	 />
+        </div>
+        <div className="actions">
+          
+          <button
+            className="button"
+            onClick={() => {
+              console.log(message)
+              SendMessage(_id, authorized, message)
+              console.log('modal closed ');
+              close();
+            }}
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    )}
+  </Popup>)
 
-  console.log ("You made it here!")
-  const handleSubmit = (evt) =>{
-    evt.preventDefault()
+          }
+
+
+
+const SendMessage = (_id, authorized, message) =>{
+  
+  console.log (_id, authorized, message)
   fetch(`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${_id}/messages`, {
     method: "POST",
     headers: {
@@ -21,20 +60,7 @@ const Messages = (props) =>{
     })
     .catch(console.error);
   }
-  
-    
-    return  ( 
-      <form onSubmit={handleSubmit}>
-      <h1> Message:</h1>
-      <label>Message:</label>
-      <input name = "Username" required
-      onChange = {e => setMessage({ ...message, content: e.target.value} )}
-      />
-      <button type="submit">submit</button>
-    
-    </form>
-    )
-}
+
 
 
 

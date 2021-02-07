@@ -7,7 +7,7 @@ const Messages = (props) => {
   const {_id, authorized} = props
   const [message, setMessage] = useState("")
   return (<Popup
-    trigger={<button className="button"> Message </button>}
+    trigger={<button className="postEdit"> Message </button>}
     modal
     nested
   >

@@ -7,47 +7,9 @@ const ShowPosts = (props) =>{
   // post id, title, price, description, author, location, createdAt, updatedAt, isAuthor
   // edit button
   // delete button
-  const {allPosts, setAllPosts, authorized, searchValue} = props
-  const [message, setMessage] = useState("")
-  
-  let postMatches = []
+  const {allPosts, setAllPosts, authorized, searchValue, currentUser} = props
   
   
-
-  //const [postId, setPostId] = useState(null);
-
-  function callMessages(id,authorized){
-    
-    
-    console.log (id +" "+ authorized)
-    const handleSubmit = (evt) =>{
-        evt.preventDefault()
-        fetch(`https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/posts/${id}/messages`, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authorized}`
-          },
-          body: JSON.stringify({message})
-        }).then(response => response.json())
-          .then(result => {
-            console.log(result);
-          })
-          .catch(console.error);
-      return  ( 
-        <form onSubmit={handleSubmit}>
-        <h1> Message:</h1>
-        <label>Message:</label>
-        <input name = "Username" required
-        onChange = {e => setMessage({ ...message, content: e.target.value} )}
-        />
-        <button type="submit">submit</button>
-        </form>
-      )
-    }
-    
-  }
-
 
   const handleDelete = async (deletePost) => {
     console.log('deletePost: ', deletePost)
@@ -67,6 +29,7 @@ const ShowPosts = (props) =>{
     .then(response => response.json())
     .then(data => {
       console.log(searchValue)
+      console.log(data)
       setAllPosts(data.data.posts)
            
 
@@ -76,19 +39,22 @@ const ShowPosts = (props) =>{
   if (allPosts){ 
     
      
-    return allPosts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt}) => 
+    return allPosts.map ( ({_id, title, description, location, author, price, createdAt, updatedAt, willDeliver, isAuthor}) => 
       
       <div className = "postBox" key={_id}>
         <span className = "postTitle">Title: {title} Price: {price}</span>
         <span className = "postDescription"></span><h4>Description: {description}</h4>
         <span className = "postLocation">Location: {location} </span>
+        <span className = "postLocation">Delivery: {willDeliver? "Yes" : "No"} </span>
         <span className = "postAuthor">Created By: {author.username}</span>
-        <span className = "postCreatedUpdated">{createdAt}, {updatedAt}, [isAuthor]</span>
-
-        <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
-        <Messages
+        <span className = "postCreatedUpdated">{createdAt}, {updatedAt}</span>
+        <hr></hr>
+        <hr></hr>
+        {!authorized ? "You are currently not logged in and cannot send messages or create posts." 
+        : currentUser === author.username ? <button type="button" className="postDelete" onClick={() => handleDelete(_id)}>Delete</button>
+        : <Messages
         _id = {_id}
-        authorized = {authorized}/>
+        authorized = {authorized}/>}
       </div>
       
     )

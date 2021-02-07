@@ -2,11 +2,10 @@ import React, {useState } from 'react';
 
 const Register = (props) =>{
   const [user, setUser] = useState('')
-  const [password, setPassword] = useState('')
+  
   const {setAuthorized} = props
   
  
-
  
   const handleSubmit = (evt) =>{
     evt.preventDefault()

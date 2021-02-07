@@ -103,6 +103,7 @@ export default function App() {
           <Route path="/Search">
             <Search
              allPosts = {allPosts}
+             currentUser = {currentUser}
              authorized = {authorized}
              searchValue = {searchValue}
              setSearchValue = {setSearchValue}

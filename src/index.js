@@ -11,6 +11,7 @@ import {
   Footer,
   Header,
   Login,
+  LogOut,
   Messages,
   Post,
   Profile,
@@ -59,6 +60,9 @@ export default function App() {
             {!authorized?<li>
               <Link to="/Login">Login</Link>
             </li> : null}
+            {authorized ? <li>
+              <Link to="/LogOut">LogOut</Link>
+            </li>: null}
           </ul>
         </nav>
 
@@ -113,6 +117,12 @@ export default function App() {
              setAllPosts = {setAllPosts}
             />
           </Route>
+          <Route path="/LogOut">
+          <LogOut
+          setCurrentUser = {setCurrentUser}
+          setAuthorized = {setAuthorized}
+          authorized = {authorized}
+          /></Route>
           
           <Route path="/Messages"><Messages/></Route>
           

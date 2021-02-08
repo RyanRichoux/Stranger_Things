@@ -7,8 +7,9 @@ import {
   Link
 } from "react-router-dom"
 
-import {
-  Footer,
+
+import{
+  LogOut,
   Header,
   Login,
   Messages,
@@ -16,7 +17,8 @@ import {
   Profile,
   Register,
   Search,
-  ShowPosts
+  ShowPosts,
+  
   
 
 } from './components';
@@ -37,6 +39,10 @@ export default function App() {
     .catch(console.error)}
     
   fetchPosts()
+
+
+
+
 
   return (
     <Router>
@@ -63,6 +69,9 @@ export default function App() {
             {!authorized?<li>
               <Link to="/Login">Login</Link>
             </li> : null}
+            {authorized ? <li>
+              <Link to="/LogOut">LogOut</Link>
+            </li>: null}
           </ul>
         </nav>
 
@@ -109,10 +118,16 @@ export default function App() {
              setSearchValue = {setSearchValue}
              setAllPosts = {setAllPosts}
             />
+            
           </Route>
           
           <Route path="/Messages"><Messages/></Route>
-          
+          <Route path="/LogOut">
+<LogOut
+          setCurrentUser = {setCurrentUser}
+          setAuthorized = {setAuthorized}
+          authorized = {authorized}
+          /></Route>
         </Switch>
       </div>
 

@@ -9,7 +9,7 @@ const Register = (props) => {
     evt.preventDefault();
 
     fetch(
-      "http://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/users/register",
+      "https://strangers-things.herokuapp.com/api/2010-LSU-WEB-PT/users/register",
       {
         method: "POST",
         headers: {

@@ -1,0 +1,105 @@
+.mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    object-fit: contain;
+  }
+
+
+.postBox {
+    padding: 10px;
+    color: black;
+    max-width: 600px;
+    min-width: 550px;
+    min-height: 200px;
+    overflow: auto;
+    max-height: 600px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(161, 188, 211);
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 10px;   
+}
+
+.postTitle {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.postDescription {
+    font-size: 14px;
+}
+
+.postLocation {
+    font-size: 14px;
+}
+
+.postAuthor {
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.postCreatedUpdated {
+        font-size: 12px;
+        font-weight: bold;
+    
+}
+
+.postEdit {
+    background: grey;
+    border: 1px solid black;
+    padding: 2px;
+    text-decoration: none;
+    color: black;
+    max-width:70px;
+}
+
+.postDelete {
+    background: darkred;
+    border: 1px solid black;
+    padding: 2px;
+    text-decoration: none;
+    color: black;
+    max-width:70px;
+}
+
+.userName {
+    max-width: 100 px;
+}
+
+.popup-content {
+    margin: auto;
+    background: rgb(255, 255, 255);
+    width: 50%;
+    padding: 5px;
+  }
+  .popup-arrow {
+    color: rgb(255, 255, 255);
+  }
+  [role='tooltip'].popup-content {
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+  }
+  
+  .popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  [data-popup='tooltip'].popup-overlay {
+    background: transparent;
+  }
+
+  *{
+    margin: 0;
+  }
+  
+  .app_header{
+    background-color:white;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+    object-fit: contain;
+  }
+  
